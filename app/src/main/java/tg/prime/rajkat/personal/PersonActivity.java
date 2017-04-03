@@ -49,7 +49,7 @@ public class PersonActivity extends AppCompatActivity {
 
     /**
      * Check if it's not empty
-     * @return boolean
+     * @return boolean&
      */
     private boolean verification(){
         boolean empty = false;

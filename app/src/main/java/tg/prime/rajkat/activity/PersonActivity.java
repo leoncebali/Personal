@@ -63,10 +63,21 @@ public class PersonActivity extends AppCompatActivity {
                     person.setFirstname(firstname.getText().toString());
                     person.setAge(Integer.parseInt(age.getText().toString()));
                     personDao.insert(person);
-                    Toast.makeText(PersonActivity.this, "Enregistrement effectué", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PersonActivity.this, "Enregistrement effectué", Toast.LENGTH_LONG).show();
+                    initialize();
                 }
             }
         });
+    }
+
+    /**
+     *
+     * Init entries
+     */
+    private void initialize(){
+        name.setText("");
+        firstname.setText("");
+        age.setText("");
     }
 
     /**

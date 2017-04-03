@@ -1,4 +1,4 @@
-package tg.prime.rajkat.personal;
+package tg.prime.rajkat.activity;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

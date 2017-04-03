@@ -1,4 +1,4 @@
-package tg.prime.rajkat.personal;
+package tg.prime.rajkat.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

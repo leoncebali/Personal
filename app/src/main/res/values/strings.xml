@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Personal</string>
     <string name="action_settings">Settings</string>
+    <string name="man">Homme</string>
+    <string name="woman">Femme</string>
+    <string name="valid">Valider</string>
+    <string name="name">Nom</string>
+    <string name="firstname">Prenom</string>
+    <string name="age">Age</string>
 </resources>

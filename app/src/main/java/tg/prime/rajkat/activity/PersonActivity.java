@@ -1,6 +1,7 @@
 package tg.prime.rajkat.activity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,15 +12,30 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import tg.prime.rajkat.model.Person;
+import tg.prime.rajkat.model.dao.DaoMaster;
+import tg.prime.rajkat.model.dao.DaoSession;
+import tg.prime.rajkat.model.dao.PersonDao;
+
 public class PersonActivity extends AppCompatActivity {
+
+    private final String BASE = "leodo_db";
 
     private ImageView picture;
     private EditText name, firstname, age;
     private Button valid;
+    private Person person;
+    private PersonDao personDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person);
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, BASE, null);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        DaoSession daoSession = daoMaster.newSession();
+        personDao = daoSession.getPersonDao();
 
         picture = (ImageView) findViewById(R.id.picture);
         name = (EditText) findViewById(R.id.name);
@@ -41,7 +57,12 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!verification()){
-                    //action to valid
+                    //action to valid and save on sqlite
+                    person = new Person();
+                    person.setName(name.getText().toString());
+                    person.setFirstname(firstname.getText().toString());
+                    person.setAge(Integer.parseInt(age.getText().toString()));
+                    personDao.insert(person);
                 }
             }
         });
